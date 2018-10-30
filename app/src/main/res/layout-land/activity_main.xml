@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/inputTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonClear"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/c"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonReverse"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonReverse"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonPercent"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonPercent"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonDelete"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/del"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button7"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_7"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/button8"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_8"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/button9"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_9"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonDivide"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonDivide"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_4"
+                android:textSize="17sp" />
+
+
+            <Button
+                android:id="@+id/button5"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_5"
+                android:textSize="17sp" />
+
+
+            <Button
+                android:id="@+id/button6"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_6"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonMultiply"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonMultiply"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_1"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_2"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_3"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonMinus"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonMinus"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonNull"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="onDigitBtnClick"
+                android:text="@string/_0"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonDot"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonDot"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonEqual"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonEqual"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/buttonPlus"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="@string/buttonPlus"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
