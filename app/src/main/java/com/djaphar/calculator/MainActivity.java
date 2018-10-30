@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
                     rightValue = rightValue.substring(0, rightValue.length() - 1);
                 } else {
                     if (operation != null) {
-                        execOperation(null);
+                        operation = null;
                     } else {
                         if (!leftValue.equals("")) {
                             leftValue = leftValue.substring(0, leftValue.length() - 1);
