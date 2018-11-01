@@ -110,6 +110,13 @@ public class MainActivity extends AppCompatActivity {
         return newValue;
     }
 
+    public String setComma(String newValue) {
+        if (newValue.contains(".")) {
+            newValue = newValue.replace('.', ',');
+        }
+        return newValue;
+    }
+
     public void reset() {
         leftValue = "";
         rightValue = "";
@@ -139,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 s += operation.getTxt() + rightValue;
             }
         }
+        s = setComma(s);
         inputTV.setText(s);
         if (flEqual)
             inputTV.setBackgroundColor(Color.GRAY);
