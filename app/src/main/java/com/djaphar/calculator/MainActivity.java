@@ -1,6 +1,7 @@
 package com.djaphar.calculator;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     TextView inputTV;
     String  leftValue = "", rightValue = "", err = "", pattern = "#.########";
     Operation operation;
+    boolean flEqual = false;
 
     Plus plus = new Plus();
     Minus minus = new Minus();
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         leftValue = "";
         rightValue = "";
         operation = null;
+        flEqual = false;
     }
 
     public Boolean errCheck(String leftValue, String rightValue) {
@@ -137,9 +140,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         inputTV.setText(s);
+        if (flEqual)
+            inputTV.setBackgroundColor(Color.GRAY);
+        else
+            inputTV.setBackgroundColor(Color.TRANSPARENT);
     }
 
     public void execOperation(Operation op) {
+        execVibrate();
         if (operation != null && !rightValue.equals("")) {
             leftValue = setDot(leftValue);
             rightValue = setDot(rightValue);
@@ -150,16 +158,19 @@ public class MainActivity extends AppCompatActivity {
         } else {
             operation = op;
         }
+        flEqual = (op == null);
         display();
     }
 
     public void onDigitBtnClick(View view) {
+        execVibrate();
+        if (flEqual)
+            reset();
         if (operation == null) {
             leftValue += ((Button) view).getText().toString();
         } else {
             rightValue += ((Button) view).getText().toString();
         }
-        execVibrate();
         display();
     }
 
@@ -173,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonPlus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                execVibrate();
                 execOperation(plus);
             }
         });
@@ -181,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonMinus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                execVibrate();
                 execOperation(minus);
             }
         });
@@ -189,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonDivide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                execVibrate();
                 execOperation(divide);
             }
         });
@@ -197,7 +205,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonMultiply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                execVibrate();
                 execOperation(Multiply);
             }
         });
@@ -215,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 execVibrate();
+                if (flEqual)
+                    reset();
                 if (operation == null) {
                     if (!leftValue.contains(",")) {
                         if (leftValue.equals("")) {
@@ -238,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 execVibrate();
+                flEqual = false;
                 if (operation == null) {
                     if (!leftValue.contains("-")) {
                         leftValue = "-" + leftValue;
@@ -253,6 +263,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 execVibrate();
+                flEqual = false;
                 if (errCheck(setDot(leftValue), setDot(rightValue))) {
                     reset();
                 } else {
@@ -270,6 +281,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 execVibrate();
+                flEqual = false;
                 if (!rightValue.equals("")) {
                     rightValue = rightValue.substring(0, rightValue.length() - 1);
                 } else {
@@ -288,7 +300,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonEqual).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                execVibrate();
                 execOperation(null);
             }
         });
