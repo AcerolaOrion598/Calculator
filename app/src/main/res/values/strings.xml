@@ -20,4 +20,6 @@
     <string name="_8">8</string>
     <string name="buttonMultiply">*</string>
     <string name="buttonDot">,</string>
+    <string name="errorNull">Деление на ноль!</string>
+    <string name="errorOther">Ошибка!</string>
 </resources>

@@ -12,6 +12,7 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
+    Context context = this;
     TextView inputTV;
     String  leftValue = "", rightValue = "", err = "", pattern = "#.########";
     Operation operation;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         void exec() {
-            if (errCheck(leftValue, rightValue)) {
+            if (errCheck(leftValue)) {
                 reset();
             } else {
                 leftValue = new DecimalFormat(pattern).format(Double.parseDouble(leftValue) + Double.parseDouble(rightValue));
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         void exec() {
-            if (errCheck(leftValue, rightValue)) {
+            if (errCheck(leftValue)) {
                 reset();
             } else {
                 leftValue = new DecimalFormat(pattern).format(Double.parseDouble(leftValue) - Double.parseDouble(rightValue));
@@ -66,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         void exec() {
-            if (errCheck(leftValue, rightValue)) {
+            if (errCheck(leftValue)) {
                 reset();
             } else {
                 if (Double.parseDouble(rightValue) != 0) {
                     leftValue = new DecimalFormat(pattern).format(Double.parseDouble(leftValue) / Double.parseDouble(rightValue));
                     rightValue = "";
                 } else {
-                    err = "Деление на ноль!";
+                    err = context.getString(R.string.errorNull);
                     reset();
                 }
             }
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         void exec() {
-            if (errCheck(leftValue, rightValue)) {
+            if (errCheck(leftValue)) {
                 reset();
             } else  {
                 leftValue = new DecimalFormat(pattern).format(Double.parseDouble(leftValue) * Double.parseDouble(rightValue));
@@ -124,9 +125,9 @@ public class MainActivity extends AppCompatActivity {
         flEqual = false;
     }
 
-    public Boolean errCheck(String leftValue, String rightValue) {
-        if (leftValue.equals("-") || leftValue.equals("0.") || rightValue.equals("0.")) {
-            err = "Ошибка!";
+    public Boolean errCheck(String leftValue) {
+        if (leftValue.equals("-")) {
+            err = context.getString(R.string.errorOther);
             return true;
         } else {
             return false;
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         s = setComma(s);
         inputTV.setText(s);
         if (flEqual)
-            inputTV.setBackgroundColor(Color.GRAY);
+            inputTV.setBackgroundColor(Color.rgb(220, 220, 220));
         else
             inputTV.setBackgroundColor(Color.TRANSPARENT);
     }
@@ -272,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 execVibrate();
                 flEqual = false;
-                if (errCheck(setDot(leftValue), setDot(rightValue))) {
+                if (errCheck(setDot(leftValue))) {
                     reset();
                 } else {
                     if ((operation == null) && (!leftValue.equals(""))) {
