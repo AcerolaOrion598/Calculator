@@ -231,6 +231,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 execVibrate();
+                leftValue = setComma(leftValue);
+                rightValue = setComma(rightValue);
                 if (flEqual)
                     reset();
                 if (operation == null) {
